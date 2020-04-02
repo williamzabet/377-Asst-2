@@ -6,7 +6,16 @@ const overlay = document.querySelector('.overlay');
 
 /* Looping through images */
 
-
+for(let i = 1; i <= 5; i += 1){
+    //create image thumbnails below main image
+    const newImage = document.createElement('img');
+    newImage.setAttribute('src', 'images/pic'+i+'.jpg');
+    thumbBar.appendChild(newImage);
+    //click on thumbnail
+    newImage.onclick = function(curImg) {
+        displayedImage.src = curImg.target.src;
+      }
+}
 
 /* Wiring up the Darken/Lighten button */
 
@@ -17,12 +26,12 @@ btn.onclick = function() {
     {
         //go dark, prepare for light
         overlay.style.backgroundColor =  'rgba(0,0,0,0.5)';
-        btn.innerHTML = 'Lighten';
+        btn.textContent = 'Lighten';
         btn.setAttribute('class', 'light');
     }else{
         //go light, prepare for dark
         overlay.style.backgroundColor =  'rgba(0,0,0,0)';
-        btn.innerHTML = 'Darken';
+        btn.textContent = 'Darken';
         btn.setAttribute('class', 'dark');
     }    
 }
